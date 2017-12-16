@@ -43,7 +43,11 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
       exiter:=True;
       end;
     4:
+<<<<<<< HEAD
     if ((ib)>=3) and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then
+=======
+    if ((ib)<=3) and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then
+>>>>>>> 549c80d392bf2d246bfdbcb96c8a2b8d785c9d88
       begin
       cells:=3;
       ie:=ib+random(cells-2)+2;
