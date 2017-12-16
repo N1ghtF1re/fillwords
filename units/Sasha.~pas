@@ -63,11 +63,8 @@ begin
     PullCoordinates(FieldSize, Words,field, ib,jb,ie,je:Integer);
     if ( not doItFilledOkay(field, fieldsize, badi, badj) ) then
     begin
-      field:=backup;
-    end
-    else
-    begin
-    
+      if (( field[i+1,j] = ' ') and ( field[i+2,j] <> ' ')) then
+        
     end;
 
   until(cellsnum <= 0);
