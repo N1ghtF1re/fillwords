@@ -13,7 +13,7 @@ const link = 'includes\config.txt';
 const letters = ['A'..'Z', 'a'..'z'];
 procedure getConfig(var name:string;var level:integer);
 procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
-procedure writeMatrix(Field:TPlayingField; size:integer);
+procedure writeMatrix(var Field:TPlayingField; size:integer);
 
 implementation
 procedure getConfig(var name:string;var level:integer);
@@ -43,7 +43,7 @@ begin
   end;
 end;
 
-procedure writeMatrix(Field:TPlayingField; size:integer);
+procedure writeMatrix(var Field:TPlayingField; size:integer);
 var i,j:byte;
 begin
   for i:=1 to size do
