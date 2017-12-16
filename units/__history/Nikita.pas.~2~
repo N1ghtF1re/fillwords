@@ -27,7 +27,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
       exiter:=True;
       end;
     2:
-    if (ib>=2) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
+    if ((Abs(ib-n))>=2) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
       begin
       cells:=Abs(ib-n);
       ie:=ib+random(cells-2)+3;
