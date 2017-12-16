@@ -1,7 +1,7 @@
 unit Sasha;
 
 interface
-  uses SysUtils, typesandconst;
+  uses SysUtils, Kiryl,typesandconst, Nikita;
 var
    f: text;
    k:string;
@@ -60,7 +60,7 @@ begin
 
   repeat
     backup:=field;
-    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je:Integer);
+    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
     if ( not doItFilledOkay(field, fieldsize, badi, badj) ) then
     begin
       field:=backup;

@@ -1,18 +1,17 @@
 unit Nikita;
 interface
 uses typesandconst,SysUtils;
-procedure  PullCoordinates(dictionary:TDictionary);
+procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var PlayingField:TplayingField; var ib,jb,ie,je:Integer);
 implementation
-procedure PullCoordinates(const FieldSize; dictionary:TDictionary; var PlayingField:TplayingField;
- var ib,jb,ie,je:Integer);
+procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var PlayingField:TplayingField; var ib,jb,ie,je:Integer);
  var exiter:Boolean;
- var cells,directions,n:Integer;
+ var cells,direction,n:Integer;
  begin
  exiter:=False;
   n:=fieldsize;
 repeat
-  ib:=Random(FieldSize)+1;
-  jb:=Random(FieldSize)+1;
+  ib:=Random(n)+1;
+  jb:=Random(n)+1;
   until  (playingField[ib,jb])<>' ';
 repeat
 direction:=random(3)+1;             //1-Right 2-Bottom 3-Left 4-up
@@ -21,32 +20,32 @@ direction:=random(3)+1;             //1-Right 2-Bottom 3-Left 4-up
   if (n-jb)>2 and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
     begin
     cells:=n-jb;
-    je:=jk+random(cells-2)+3;
-    ie:=ik;
+    je:=jb+random(cells-2)+3;
+    ie:=ib;
     exiter:=True;
     end;
   2:
   if (Abs(ib-n))>2 and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
     begin
     cells:=Abs(ib-n);
-    ie:=ik+random(cells-2)+3;
-    je:=jk;
+    ie:=ib+random(cells-2)+3;
+    je:=jb;
     exiter:=True;                                                                              //1-Right 2-Bottom 3-Left 4-up
     end;
   3:
   if Abs(jb-n)>2 and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then  //Left
     begin
     cells:= Abs(jb-n);
-    je:=jk-random(cells-2)+3;
-    ie:=ik;
+    je:=jb-random(cells-2)+3;
+    ie:=ib;
     exiter:=True;
     end;
   4:
   if (n-ib)>2 and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then
     begin
     cells:=n-ib;
-    ie:=ik+random(cells-2)+3;
-    je:=jk;
+    ie:=ib+random(cells-2)+3;
+    je:=jb;
     exiter:=True;
     end;
   end;
@@ -57,3 +56,4 @@ end;
 
 
 end.
+
