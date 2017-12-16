@@ -12,8 +12,8 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
  exiter:=False;
   n:=fieldsize;
   repeat
-    ib:=4;//Random(n)+1;
-    jb:=4//Random(n)+1;
+    ib:=Random(n)+1;
+    jb:=Random(n)+1;
   until  (playingField[ib,jb])=' ';
   repeat
     direction:=random(1)+1;             //1-Right 2-Bottom 3-Left 4-up
