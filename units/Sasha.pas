@@ -38,7 +38,8 @@ begin
     Delete(k,1,6);
     name:=Copy(k,1,Pos('"', k)-1);
     Delete(k,1,Pos('"', k)+8);
-    level:=StrToInt(Copy(k,1,Pos('"', k)-1));
+    delete(k,Pos('"', k),1);
+    level:=StrToInt(k);
     Close(f);
   end;
 end;
@@ -135,10 +136,7 @@ begin
 
 
   until(cellsnum <= 0);
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 522b9e8... add exit condition
 end;
 
 end.
