@@ -19,5 +19,4 @@ begin
   fillArray(Words);
   game(level,Words, PlayingField);
   Readln;
-  readln;
 end.

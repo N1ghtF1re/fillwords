@@ -16,37 +16,57 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     jb:=Random(n)+1;
   until  ((playingField[ib,jb])=' ') and (ib<=(n-2)) and (jb<=(n-2));
   repeat
+<<<<<<< HEAD
     direction:=random(1)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
     1:
     if (jb<=3) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ')and (playingField[ib,jb]=' ') then
+=======
+  direction:=random(4)+1;             //1-Right 2-Bottom 3-Left 4-up
+    case direction of
+    1:
+    if ((n-jb)>=2) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
+>>>>>>> parent of 092f615... KEK
       begin
-      cells:=3;
-      je:=jb+random(cells-2)+2;
+      cells:=n-jb;
+      je:=jb+random(cells-2)+3;
       ie:=ib;
       exiter:=True;
       end;
     2:
+<<<<<<< HEAD
     if (ib<=3) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') and (playingField[ib,jb]=' ') then
+=======
+    if ((Abs(ib-n))>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
+>>>>>>> parent of 092f615... KEK
       begin
-      cells:=3;
-      ie:=ib+random(cells-2)+2;
+      cells:=Abs(ib-n);
+      ie:=ib+random(cells-2)+3;
       je:=jb;
       exiter:=True;                                                                              //1-Right 2-Bottom 3-Left 4-up
       end;
+<<<<<<< HEAD
     {3:
     if (jb>=3) and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then  //Left
+=======
+    3:
+    if (Abs(jb-n)>=2) and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then  //Left
+>>>>>>> parent of 092f615... KEK
       begin
-      cells:= 3;
-      je:=jb-random(cells-2)+2;
+      cells:= Abs(jb-n);
+      je:=jb-random(cells-2)+3;
       ie:=ib;
       exiter:=True;
       end;
     4:
+<<<<<<< HEAD
     if ((ib)<=3) and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then
+=======
+    if ((n-ib)>=2) and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then
+>>>>>>> parent of 092f615... KEK
       begin
-      cells:=3;
-      ie:=ib+random(cells-2)+2;
+      cells:=n-ib;
+      ie:=ib+random(cells-2)+3;
       je:=jb;
       exiter:=True;
       end; }
