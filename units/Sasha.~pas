@@ -1,7 +1,7 @@
 unit Sasha;
 
 interface
-  uses SysUtils, typesandconst, Nikita,Kiryl;
+  uses SysUtils, Kiryl,typesandconst, Nikita;
 var
    f: text;
    k:string;

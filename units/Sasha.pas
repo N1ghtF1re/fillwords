@@ -1,13 +1,14 @@
 unit Sasha;
 
 interface
-  uses SysUtils, Kiryl,typesandconst, Nikita;
+  uses Kiryl,SysUtils,typesandconst, Nikita;
 var
    f: text;
    k:string;
    name,level:string;
    query:string;
    substr:string;
+   isVseNorm: Boolean;
 const link = 'includes\config.txt';
 const letters = ['A'..'Z', 'a'..'z'];
 procedure getConfig(var name:string;var level:integer);
@@ -61,7 +62,8 @@ begin
   repeat
     backup:=field;
     PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
-    if ( not doItFilledOkay(field, fieldsize, badi, badj) ) then
+    isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
+    if ( not isVseNorm ) then
     begin
       field:=backup;
     end

@@ -4,7 +4,7 @@ interface
 uses
     typesandconst,SysUtils;
 procedure  fillArray(var dictionary:TDictionary);
-
+function doItFilledOkay(var Arr:TPlayingField; fieldsize,x,y:integer):boolean;
 implementation
 procedure fillArray(var dictionary:TDictionary);
 Const link = ('includes/library.txt');
