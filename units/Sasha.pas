@@ -135,7 +135,10 @@ begin
 
 
   until(cellsnum <= 0);
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 522b9e8... add exit condition
 end;
 
 end.
