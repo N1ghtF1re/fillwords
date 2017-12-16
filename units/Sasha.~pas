@@ -69,7 +69,7 @@ begin
     end
     else
     begin
-    
+      
     end;
 
   until(cellsnum <= 0);

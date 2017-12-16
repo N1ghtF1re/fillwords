@@ -25,7 +25,7 @@ leftbehind:=84;
     readln(f,inpStr);
 
     lenghtStr:=length(inpStr);
-    N:=StrToInt(dictionary[1,lenghtStr])+1;
+    N:=StrToInt(dictionary[1,lenghtStr])+2;
     dictionary[N,lenghtStr]:=inpStr;
     dictionary[1,lenghtStr]:=IntToStr(N);
 
