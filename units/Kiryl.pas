@@ -2,7 +2,7 @@ unit Kiryl;
 
 interface
 uses
-    typeandconst,SysUtils;
+    typesandconst,SysUtils;
 procedure  fillArray(var dictionary:TDictionary);
 
 implementation
@@ -24,10 +24,10 @@ repeat
   reset(f);
   readln(f,inpStr);
 
-  lenghtStr:=lenght(inpStr);
-  N:=StrToInc(dictionary[1,lenghtStr])+1;
+  lenghtStr:=length(inpStr);
+  N:=StrToInt(dictionary[1,lenghtStr])+1;
   dictionary[N,lenghtStr]:=inpStr;
-  dictionary[1,lenghtStr]:=IncToStr(N);
+  dictionary[1,lenghtStr]:=IntToStr(N);
 
 
 dec(leftbehind);
