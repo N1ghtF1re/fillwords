@@ -32,7 +32,7 @@ repeat
 
 
 dec(leftbehind);
-until leftbehind<1;
+until leftbhind<1;
 end;
 
 end.
