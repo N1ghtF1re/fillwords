@@ -3,8 +3,9 @@ program fillwords;
 {$APPTYPE CONSOLE}
 
 uses
-  SysUtils;
+  SysUtils,
+  typesandconst in 'units\typesandconst.pas';
 
 begin
-  { TODO -oUser -cConsole Main : Insert code here }
+  
 end.
