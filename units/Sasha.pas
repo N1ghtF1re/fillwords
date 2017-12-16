@@ -72,7 +72,7 @@ begin
       field[i,j]:=' ';
     end;
   end;
-  cellsnum:=fieldsize;
+  cellsnum:=fieldsize*fieldsize;
 
   repeat
     backup:=field;
@@ -129,12 +129,15 @@ begin
           field[ib, Vasya]:=str[Petya];
           Inc(Petya);
         end;
+        dec(cellnum, currlength);
       end;
       writeMatrix(field, fieldsize);
     end;
 
 
   until(cellsnum <= 0);
+  writeln(Game over);
+  readln;
 end;
 
 end.
