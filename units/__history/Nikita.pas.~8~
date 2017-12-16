@@ -22,7 +22,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     if (jb<=3) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
       begin
       cells:=3;
-      je:=jb+random(cells-2)+2;
+      je:=jb+random(cells-2)+3;
       ie:=ib;
       exiter:=True;
       end;
@@ -30,7 +30,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     if (ib<=3) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
       begin
       cells:=3;
-      ie:=ib+random(cells-2)+2;
+      ie:=ib+random(cells-2)+3;
       je:=jb;
       exiter:=True;                                                                              //1-Right 2-Bottom 3-Left 4-up
       end;
@@ -38,7 +38,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     if (jb>=3) and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then  //Left
       begin
       cells:= 3;
-      je:=jb-random(cells-2)+2;
+      je:=jb-random(cells-2)+3;
       ie:=ib;
       exiter:=True;
       end;
@@ -46,7 +46,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     if ((ib)>=3) and (playingField[ib-1,jb]=' ') and (playingField[ib-2,jb]=' ') then
       begin
       cells:=3;
-      ie:=ib+random(cells-2)+2;
+      ie:=ib+random(cells-2)+3;
       je:=jb;
       exiter:=True;
       end;
