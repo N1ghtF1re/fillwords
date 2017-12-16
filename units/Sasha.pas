@@ -85,9 +85,9 @@ begin
     else
     begin
       if(ib <> ie) then
-        currlength:= abs(ie-ib)
+        currlength:= abs(ie-ib)+1
       else
-        currlength:= abs(je-jb);
+        currlength:= abs(je-jb)+1;
       numofwords:= StrToInt(Words[1,currlength]);
       str:=words[Random(Numofwords-2)+3,currlength];
 
