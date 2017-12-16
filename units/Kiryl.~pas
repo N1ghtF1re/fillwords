@@ -12,7 +12,7 @@ var i,j,lenghtStr, leftbehind, N:Integer;
     inpStr:string;
     f:textfile;
 begin
-for i:=1 to 12 do
+for i:=1 to maxSize do
   begin
   dictionary[1,i]:=IntToStr(0);
   end;

@@ -33,9 +33,11 @@ dec(leftbehind);
 until leftbehind<1;
 end;
 
-function doItFilledOkay(var Arr:TPlayingField; fieldsize:integer):boolean;
+function doItFilledOkay(var Arr:TPlayingField; fieldsize,x,y:integer):boolean;
 var i,j:Integer;
     kek:Boolean;
+label
+    GotoLabel;
 begin
 kek:=True;
 for i:=1 to fieldsize do
@@ -60,7 +62,15 @@ for i:=1 to fieldsize do
       if (i>fieldsize-2) and (j>fieldsize-2) then
         if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i-2,j] = ' ') or (Arr[i,j-2] = ' ')
         then else kek:=false;
+      if kek = false then goto GotoLabel;
       end;
+
+GotoLabel:
+if kek=false then
+  begin
+  x:=i;
+  y:=j;
+  end;
 doItFilledOkay:=kek;
 end;
 
