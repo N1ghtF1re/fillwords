@@ -3,8 +3,11 @@ program fillwords;
 {$APPTYPE CONSOLE}
 
 uses
-  SysUtils;
-
+  SysUtils,
+  typesandconst in 'units\typesandconst.pas',
+  Sasha in 'units\Sasha.pas';
+var name:string;
+    level:integer;
 begin
-  { TODO -oUser -cConsole Main : Insert code here }
+  getConfig(name,level);
 end.
