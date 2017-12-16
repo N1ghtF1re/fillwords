@@ -1,7 +1,11 @@
 unit Nikita;
 interface
 uses typesandconst,SysUtils;
+<<<<<<< HEAD
 procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var PlayingField:TplayingField; var ib,jb,ie,je:Integer);
+=======
+procedure  PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var PlayingField:TplayingField; var ib,jb,ie,je:Integer);
+>>>>>>> 559283518922d082b7b6846253c7102643109924
 implementation
 procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var PlayingField:TplayingField; var ib,jb,ie,je:Integer);
  var exiter:Boolean;
