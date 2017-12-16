@@ -12,9 +12,9 @@ var i,j,lenghtStr, leftbehind, N:Integer;
     inpStr:string;
     f:textfile;
 begin
-for i:=1 to maxSize do
+  for i:=1 to maxSize do
   begin
-  dictionary[1,i]:=IntToStr(0);
+    dictionary[1,i]:=IntToStr(0);
   end;
 N:=0;
 leftbehind:=84;
