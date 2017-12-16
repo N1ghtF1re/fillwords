@@ -1,11 +1,15 @@
 unit Nikita;
 interface
-uses typeandconst,SysUtils;
+uses typesandconst,SysUtils;
 procedure  PullCoordinates(dictionary:TDictionary);
 implementation
 procedure PullCoordinates(const FieldSize; dictionary:TDictionary; var PlayingField:TplayingField;
  var ib,jb,ie,je:Integer);
-exiter:=False;
+ var exiter:Boolean;
+ var cells,directions,n:Integer;
+ begin
+ exiter:=False;
+  n:=fieldsize;
 repeat
   ib:=Random(FieldSize)+1;
   jb:=Random(FieldSize)+1;
@@ -49,6 +53,7 @@ direction:=random(3)+1;             //1-Right 2-Bottom 3-Left 4-up
 
 until exiter=False;
 end;
+ end;
+
 
 end.
- 
