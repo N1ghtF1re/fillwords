@@ -18,19 +18,20 @@ for i:=1 to maxSize do
   end;
 N:=0;
 leftbehind:=84;
-repeat
   assign(f,link);
   reset(f);
-  readln(f,inpStr);
+  while not eof(f) do
+  begin
+    readln(f,inpStr);
 
-  lenghtStr:=length(inpStr);
-  N:=StrToInt(dictionary[1,lenghtStr])+1;
-  dictionary[N,lenghtStr]:=inpStr;
-  dictionary[1,lenghtStr]:=IntToStr(N);
+    lenghtStr:=length(inpStr);
+    N:=StrToInt(dictionary[1,lenghtStr])+1;
+    dictionary[N,lenghtStr]:=inpStr;
+    dictionary[1,lenghtStr]:=IntToStr(N);
 
 
-dec(leftbehind);
-until leftbehind<1;
+  dec(leftbehind);
+  end;
 end;
 
 function doItFilledOkay(var Arr:TPlayingField; fieldsize,x,y:integer):boolean;
