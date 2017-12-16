@@ -19,7 +19,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     direction:=random(4)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
     1:
-    if (jb>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
+    if (jb)>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
       begin
       cells:=n-jb;
       je:=jb+random(cells-2)+3;
