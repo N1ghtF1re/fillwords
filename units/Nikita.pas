@@ -19,7 +19,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     direction:=random(4)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
     1:
-    if ((n-jb)>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
+    if (jb)>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ') then
       begin
       cells:=n-jb;
       je:=jb+random(cells-2)+3;
@@ -27,7 +27,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
       exiter:=True;
       end;
     2:
-    if (ib>=2) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
+    if (ib<=3) and (playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ') then
       begin
       cells:=Abs(ib-n);
       ie:=ib+random(cells-2)+3;
@@ -35,7 +35,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
       exiter:=True;                                                                              //1-Right 2-Bottom 3-Left 4-up
       end;
     3:
-    if (Abs(jb-n)>=2) and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then  //Left
+    if (jb>=3) and (playingField[ib,jb-1]=' ') and (playingField[ib,jb-2]=' ') then  //Left
       begin
       cells:= Abs(jb-n);
       je:=jb-random(cells-2)+3;
