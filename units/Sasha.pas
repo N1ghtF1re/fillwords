@@ -161,7 +161,10 @@ backup: TPlayingField;
 rand:byte;
 backnumber:integer;
 str:string;
+counter:integer;
 begin
+  counter:=0;
+  counter:=0;
   wordslistsize:=0;
   fieldsize:= 5+lvl div 5;
   writeln(fieldsize);
@@ -251,7 +254,9 @@ begin
       WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
       inc(WordsListSize);
     end;
+    inc(counter);
   until(cellsnum <= 0);
+  writeln(counter);
 
 
   gameEnterWords(field, fieldsize, WordsListSize);
@@ -259,6 +264,7 @@ begin
 end;
 
 end.
+
 
 
 
