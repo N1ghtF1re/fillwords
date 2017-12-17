@@ -14,8 +14,8 @@ const letters = ['A'..'Z', 'a'..'z'];
 procedure getConfig(var name:string;var level:integer);
 procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
 procedure writeMatrix(var Field:TPlayingField; size:integer);
-procedure gameEnterWords(var field:TPLayingField; fieldsize:integer; var size: integer);
-procedure deleteWord(var field:TPlayingField;const ib,ie,jb,je:integer; var cellnum: integer);
+procedure gameEnterWords(var field:TWordsList; fieldsize:integer; var size: integer);
+procedure deleteWord(var field:TWordsList;const ib,ie,jb,je:integer; var cellnum: integer);
 implementation
 procedure getConfig(var name:string;var level:integer);
 begin
@@ -58,7 +58,7 @@ begin
   end;
 end;
 
-procedure deleteWord(var field:TPlayingField;const ib,ie,jb,je:integer; var cellnum: integer);
+procedure deleteWord(var field:TWordsList;const ib,ie,jb,je:integer; var cellnum: integer);
 var currlength, min, max: integer;
     i,j:integer;
 begin
@@ -115,7 +115,7 @@ begin
   Dec(cellnum,currlength);
 end;
 
-procedure gameEnterWords(var field:TPLayingField; fieldsize:integer; var size: integer);
+procedure gameEnterWords(var field:TWordsList; fieldsize:integer; var size: integer);
 var
   word:string;
   i:integer;
@@ -144,6 +144,7 @@ begin
         je:=StrToInt(CoordString);
         deleteWord(field,ib,ie,jb,je, cellnum);
         del:=True;
+        writeMatrix(field, fieldsize);
         Break;
       end;
     end;
@@ -254,7 +255,7 @@ begin
   until(cellsnum <= 0);
 
 
-  gameEnterWords(field, fieldsize, WordsListSize);
+  gameEnterWords(WordsList, fieldsize, WordsListSize);
   writeln('Game over');
 end;
 
