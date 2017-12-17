@@ -246,8 +246,10 @@ end;
           else
             currlength:= abs(je-jb)+1;
           numofwords:= StrToInt(Words[1,currlength]);
+          repeat
           rand:=Random(Numofwords-1)+2;
-          str:=words[rand,currlength];
+            str:=words[rand,currlength];
+          until(not checkExisting(WordsList, Str, wordslistSize));
 
           if(ib <> ie) then
           begin
@@ -305,7 +307,7 @@ end;
       until(cellsnum <= 0);
       writeMatrix(field, fieldsize);
       gameEnterWords(WordsList,field,fieldsize, WordsListSize);
-
+      clrscr;
       levelup(lvl, name);
     until(fieldsize > 100);
   end;
