@@ -1,7 +1,7 @@
 unit Sasha;
 
 interface
-  uses Kiryl,SysUtils,typesandconst, Nikita;
+  uses Kiryl,SysUtils,typesandconst, Nikita, Windows;
 var
    f: text;
    k:string;
@@ -17,7 +17,21 @@ procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
 procedure writeMatrix(var Field:TPlayingField; size:integer);
 procedure gameEnterWords(var field:TWordsList; var Gamefield:TPLayingField; fieldsize:integer; var size: integer);
 procedure deleteWord(var field:TPlayingField;const ib,ie,jb,je:integer; var cellnum: integer);
+procedure clrscr;
 implementation
+
+procedure clrscr;
+var
+  cursor: COORD;
+  r: cardinal;
+begin
+  r := 300;
+  cursor.X := 0;
+  cursor.Y := 0;
+  FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 80 * r, cursor, r);
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursor);
+end;
+
   procedure getConfig(var name:string;var level:integer);
   begin
     assign(f,link);
@@ -147,12 +161,17 @@ implementation
           je:=StrToInt(CoordString);
           deleteWord(Gamefield,ib,ie,jb,je, cellnum);
           del:=True;
+          clrscr;
           writeMatrix(Gamefield, fieldsize);
         end;
         Inc(i);
       end;
       if (not del) then
+      begin
+        clrscr;
+        writeMatrix(Gamefield, fieldsize);
         Writeln('Word not found :c');
+      end;
     until cellnum <= 0;
   end;
 

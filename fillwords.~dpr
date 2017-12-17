@@ -19,7 +19,6 @@ begin
   getConfig(name,level);
   Writeln('Welcome, ', name);
   fillArray(Words);
-  readln;
   game(level,Words, PlayingField);
   writeln('Game over');
 end.
