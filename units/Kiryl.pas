@@ -16,21 +16,16 @@ begin
   begin
     dictionary[1,i]:=IntToStr(0);
   end;
-N:=0;
-leftbehind:=84;
+  N:=0;
   assign(f,link);
   reset(f);
   while not eof(f) do
   begin
     readln(f,inpStr);
-
     lenghtStr:=length(inpStr);
     N:=StrToInt(dictionary[1,lenghtStr])+2;
     dictionary[N,lenghtStr]:=inpStr;
-    dictionary[1,lenghtStr]:=IntToStr(N);
-
-
-  dec(leftbehind);
+    dictionary[1,lenghtStr]:=IntToStr(N-1);
   end;
 end;
 

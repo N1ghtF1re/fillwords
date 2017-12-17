@@ -76,21 +76,22 @@ begin
   cellsnum:=fieldsize*fieldsize;
 
   repeat
-    backup:=field;
-    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
-    isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
     if ( not isVseNorm ) then
     begin
       field:=backup;
     end
-    else
+    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
+    isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
+
+    if ( isVseNorm ) then
     begin
+      backup:=field;
       if(ib <> ie) then
         currlength:= abs(ie-ib)+1
       else
         currlength:= abs(je-jb)+1;
       numofwords:= StrToInt(Words[1,currlength]);
-      str:=words[Random(Numofwords-2)+3,currlength];
+      str:=words[Random(Numofwords-1)+2,currlength];
 
       if(ib <> ie) then
       begin
@@ -105,10 +106,13 @@ begin
           max:=ie;
         end;
         Petya:=1;
-        for Vasya:=min to max do
+        vasya:=min;
+        //for Vasya:=min to max do
+        while (vasya <= max) do
         begin
           field[Vasya, jb]:=str[Petya];
           Inc(Petya);
+          inc(Vasya);
         end;
 
       end
@@ -125,15 +129,18 @@ begin
           max:=je;
         end;
         Petya:=1;
-        for Vasya:=min to max do
+        vasya:=min;
+        //for Vasya:=min to max do
+        while (vasya <= max) do
         begin
           field[ib, Vasya]:=str[Petya];
           Inc(Petya);
+          inc(Vasya);
         end;
       end;
       dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
-      Writeln('Enter to continue ',Cellnum);
+      Writeln('Enter to continue ', Cellsnum);
       readln;
     end;
 
