@@ -197,6 +197,7 @@ begin
       begin
         fieldStatusQuo(field, fieldsize);
         cellsnum:=fieldsize*fieldsize;
+        counter:=0;
       end;
     end;
 
