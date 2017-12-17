@@ -13,7 +13,7 @@ const link = 'includes\config.txt';
 const letters = ['A'..'Z', 'a'..'z'];
 procedure fieldStatusQuo(var field:TPlayingField; fieldsize:Integer);
 procedure getConfig(var name:string;var level:integer);
-procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
+procedure game(var lvl:integer; Words:TDictionary;var field: TPlayingField; name:string);
 procedure writeMatrix(var Field:TPlayingField; size:integer);
 procedure gameEnterWords(var field:TWordsList; var Gamefield:TPLayingField; fieldsize:integer; var size: integer);
 procedure deleteWord(var field:TPlayingField;const ib,ie,jb,je:integer; var cellnum: integer);
@@ -58,6 +58,16 @@ end;
       level:=StrToInt(k);
       Close(f);
     end;
+  end;
+
+  procedure levelup(var level: integer; name: string);
+  begin
+    inc(level);
+    Rewrite(f);
+    query:='name="' + name + '" level="'+IntToStr(level)+'"';
+    Writeln('New level: ', level);
+    write(f,query);
+    Close(f);
   end;
 
   procedure writeMatrix(var Field:TPlayingField; size:integer);
@@ -183,7 +193,7 @@ end;
     end;
   end;
 
-  procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
+  procedure game(var lvl:integer; Words:TDictionary;var field: TPlayingField; name:string);
   var fieldsize,cellsnum:integer;
   var ib,jb,ie,je,k, badi, badj, currlength, numofwords, i,j, min,max: integer;
   WordsList:TWordsList;
@@ -295,7 +305,9 @@ end;
       until(cellsnum <= 0);
       writeMatrix(field, fieldsize);
       gameEnterWords(WordsList,field,fieldsize, WordsListSize);
-    until(StrToInt(level)<100);
+
+      levelup(lvl, name);
+    until(fieldsize > 100);
   end;
 
 end.

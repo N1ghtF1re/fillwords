@@ -17,7 +17,7 @@ var name:string;
 
 begin
   getConfig(name,level);
-  Writeln('Welcome, ', name);
+  Writeln('Welcome, ', name, '. Level: ', level);
   fillArray(Words);
   game(level,Words, PlayingField);
   writeln('Game over');
