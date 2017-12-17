@@ -63,6 +63,7 @@ i,j:byte;
 var ib,jb,ie,je, badi, badj, currlength, numofwords, Vasya,Petya, min,max: integer;
 backup: TPlayingField;
 rand:byte;
+backnumber:integer;
 str:string;
 begin
   fieldsize:= 5+lvl div 5;
@@ -81,12 +82,14 @@ begin
     if ( not isVseNorm ) then
     begin
       field:=backup;
+      cellsnum:=backnumber;
     end;
     PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
 
     if ( isVseNorm ) then
     begin
       backup:=field;
+      backnumber:=cellsnum;
       if(ib <> ie) then
         currlength:= abs(ie-ib)+1
       else

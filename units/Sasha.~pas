@@ -62,6 +62,7 @@ var fieldsize,cellsnum:integer;
 i,j:byte;
 var ib,jb,ie,je, badi, badj, currlength, numofwords, Vasya,Petya, min,max: integer;
 backup: TPlayingField;
+rand:byte;
 str:string;
 begin
   fieldsize:= 5+lvl div 5;
@@ -76,12 +77,12 @@ begin
   cellsnum:=fieldsize*fieldsize;
 
   repeat
+    isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
     if ( not isVseNorm ) then
     begin
       field:=backup;
-    end
+    end;
     PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
-    isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
 
     if ( isVseNorm ) then
     begin
@@ -91,7 +92,8 @@ begin
       else
         currlength:= abs(je-jb)+1;
       numofwords:= StrToInt(Words[1,currlength]);
-      str:=words[Random(Numofwords-1)+2,currlength];
+      rand:=Random(Numofwords-1)+2;
+      str:=words[rand,currlength];
 
       if(ib <> ie) then
       begin
