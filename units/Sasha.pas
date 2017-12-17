@@ -93,13 +93,11 @@ end;
         min:=ib;
         max:=ie;
       end;
-        j:=1;
         i:=min;
         //for i:=min to max do
       while (i <= max) do
       begin
         field[i, jb]:=' ';
-        Inc(j);
         inc(i);
       end;
 
@@ -116,13 +114,11 @@ end;
         min:=jb;
         max:=je;
       end;
-        j:=1;
         i:=min;
       //for i:=min to max do
       while (i <= max) do
       begin
         field[ib, i]:=' ';
-        Inc(j);
         inc(i);
       end;
 
@@ -198,106 +194,108 @@ end;
   str:string;
   counter:integer;
   begin
-    wordslistsize:=0;
-    fieldsize:= 5+lvl div 5;
-    writeln(fieldsize);
-    fieldStatusQuo(field, fieldsize);
-    cellsnum:=fieldsize*fieldsize;
-    counter:=0;
     repeat
-      isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
-      if ( not isVseNorm ) then
-      begin
-        field:=backup;
-        inc(cellsnum,length(WordsList[1,wordslistSize]));
-        WordsList[1,wordslistSize]:='';
-        WordsList[2,wordslistSize]:='';
-        dec(wordslistSize);
-        Inc(counter);
-       // writeln(counter);
-        if(counter > 20) then
+      wordslistsize:=0;
+      fieldsize:= 5+lvl div 5;
+      writeln(fieldsize);
+      fieldStatusQuo(field, fieldsize);
+      cellsnum:=fieldsize*fieldsize;
+      counter:=0;
+      repeat
+        isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
+        if ( not isVseNorm ) then
         begin
-          fieldStatusQuo(field, fieldsize);
-          cellsnum:=fieldsize*fieldsize;
-          counter:=0;
-          for k:=1 to wordslistsize do
+          field:=backup;
+          inc(cellsnum,length(WordsList[1,wordslistSize]));
+          WordsList[1,wordslistSize]:='';
+          WordsList[2,wordslistSize]:='';
+          dec(wordslistSize);
+          Inc(counter);
+         // writeln(counter);
+          if(counter > 20) then
           begin
-            WordsList[1,WordsListsize+1]:='';
-            WordsList[2,WordsListSize+1]:='';
+            fieldStatusQuo(field, fieldsize);
+            cellsnum:=fieldsize*fieldsize;
+            counter:=0;
+            for k:=1 to wordslistsize do
+            begin
+              WordsList[1,k]:='';
+              WordsList[2,k]:='';
+            end;
+            wordslistsize:=0;
           end;
-          wordslistsize:=0;
         end;
-      end;
 
-      PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
+        PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
 
-      if ( isVseNorm ) then
-      begin
-        backup:=field;
-        if(ib <> ie) then
-          currlength:= abs(ie-ib)+1
-        else
-          currlength:= abs(je-jb)+1;
-        numofwords:= StrToInt(Words[1,currlength]);
-        rand:=Random(Numofwords-1)+2;
-        str:=words[rand,currlength];
-
-        if(ib <> ie) then
+        if ( isVseNorm ) then
         begin
-          if (ib > ie) then
-          begin
-            min:=ie;
-            max:=ib;
-          end
+          backup:=field;
+          if(ib <> ie) then
+            currlength:= abs(ie-ib)+1
           else
+            currlength:= abs(je-jb)+1;
+          numofwords:= StrToInt(Words[1,currlength]);
+          rand:=Random(Numofwords-1)+2;
+          str:=words[rand,currlength];
+
+          if(ib <> ie) then
           begin
-            min:=ib;
-            max:=ie;
-          end;
-          j:=1;
-          i:=min;
-          //for i:=min to max do
-          while (i <= max) do
-          begin
-            field[i, jb]:=str[j];
-            Inc(j);
-            inc(i);
-          end;
+            if (ib > ie) then
+            begin
+              min:=ie;
+              max:=ib;
+            end
+            else
+            begin
+              min:=ib;
+              max:=ie;
+            end;
+            j:=1;
+            i:=min;
+            //for i:=min to max do
+            while (i <= max) do
+            begin
+              field[i, jb]:=str[j];
+              Inc(j);
+              inc(i);
+            end;
 
         
-        end
-        else
-        begin
-          if (jb > je) then
-          begin
-            min:=je;
-            max:=jb;
           end
           else
           begin
-            min:=jb;
-            max:=je;
-          end;
-          j:=1;
-          i:=min;
-          //for i:=min to max do
-          while (i <= max) do
-          begin
-            field[ib, i]:=str[j];
-            Inc(j);
-            inc(i);
-          end;
+            if (jb > je) then
+            begin
+              min:=je;
+              max:=jb;
+            end
+            else
+            begin
+              min:=jb;
+              max:=je;
+            end;
+            j:=1;
+            i:=min;
+            //for i:=min to max do
+            while (i <= max) do
+            begin
+              field[ib, i]:=str[j];
+              Inc(j);
+              inc(i);
+            end;
 
+          end;
+          dec(cellsnum, currlength);
+         // Writeln('Enter to continue ', Cellsnum);
+          WordsList[1,WordsListsize+1]:=Str;
+          WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
+          inc(WordsListSize);
         end;
-        dec(cellsnum, currlength);
-       // Writeln('Enter to continue ', Cellsnum);
-        WordsList[1,WordsListsize+1]:=Str;
-        WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
-        inc(WordsListSize);
-      end;
-    until(cellsnum <= 0);
-    writeMatrix(field, fieldsize);
-    gameEnterWords(WordsList,field,fieldsize, WordsListSize);
+      until(cellsnum <= 0);
+      writeMatrix(field, fieldsize);
+      gameEnterWords(WordsList,field,fieldsize, WordsListSize);
+    until(StrToInt(level)<100);
   end;
 
 end.
