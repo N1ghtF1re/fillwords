@@ -41,24 +41,108 @@ for i:=1 to fieldsize do
   for j:=1 to fieldsize do
     if Arr[i,j] = ' ' then
       begin
-      if (i<3) and (j<3) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i+2,j] = ' ') or (Arr[i,j+2] = ' ')
+      if (i<=fieldsize-2) and (i>=3) and (j>=3) and (j<=fieldsize-2) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
         then else kek:=false;
-      if (i<fieldsize-2) and (i>3) and (j<3) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i+2,j] = ' ') or (Arr[i-2,j] = ' ') or (Arr[i,j+2] = ' ')
+
+      if (i=1) and  (j=1) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
         then else kek:=false;
-      if (i<fieldsize-2) and (i>3) and (j>3) and (j<fieldsize-2) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i+2,j] = ' ') or (Arr[i-2,j] = ' ') or (Arr[i,j+2] = ' ') or (Arr[i,j-2] = ' ')
+
+      if (i=1) and  (j=fieldsize) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
         then else kek:=false;
-      if (i>fieldsize-2) and (j>3) and (j<fieldsize-2) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i-2,j] = ' ') or (Arr[i,j+2] = ' ') or (Arr[i,j-2] = ' ')
+
+      if (i=1) and  (j=fieldsize-1) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' '))
         then else kek:=false;
-      if (i<fieldsize-2) and (i>3) and (j>fieldsize-2) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i+2,j] = ' ') or (Arr[i-2,j] = ' ') or (Arr[i,j-2] = ' ')
+
+      if (i=1) and  (j>2) and (j<fieldsize-1) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
         then else kek:=false;
-      if (i>fieldsize-2) and (j>fieldsize-2) then
-        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or (Arr[i-2,j] = ' ') or (Arr[i,j-2] = ' ')
+
+      if (i=1) and  (j=2) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
         then else kek:=false;
+
+      if (i=fieldsize) and  (j=1) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize-1) and  (j=1) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i>2) and (i<fieldsize-1) and  (j=1) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=2) and  (j=1) then
+        if ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize) and  (j=fieldsize) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize-1) and (j=fieldsize-1) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize) and  (j=fieldsize-1) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize-1) and  (j=fieldsize) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize-1) and  (j=2) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize) and  (j=2) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize) and  (j>2) and (i<fieldsize-1) then
+        if ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j-2] = ' '))
+        then else kek:=false;
+
+      if (i=2) and (j=2) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=fieldsize-1) and (j>=3) and (j<=fieldsize-2) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i<=fieldsize-2) and (i>=3) and (j=fieldsize-1) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j-2] = ' ') and (Arr[i,j-1] = ' '))
+        then else kek:=false;
+
+      if (i<=fieldsize-2) and (i>=3) and (j=2) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i+2,j] = ' ') and (Arr[i+1,j] = ' ')) or ((Arr[i-2,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i,j+2] = ' ') and (Arr[i,j+1] = ' '))
+        then else kek:=false;
+
+      if (i=2) and (j>2) and (j<fieldsize-1) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i+2,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j+2] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j-2] = ' '))
+        then else kek:=false;
+
+      if (i=2) and (j=fieldsize-1) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i+2,j] = ' ')) or ((Arr[i,j+1] = ' ') and (Arr[i,j-1] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j-2] = ' '))
+        then else kek:=false;
+
+      if (i=2) and (j=fieldsize) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i+2,j] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j-2] = ' '))
+        then else kek:=false;
+
+      if (i>2) and (i<fieldsize-1) and (j=fieldsize) then
+        if ((Arr[i+1,j] = ' ') and (Arr[i-1,j] = ' ')) or ((Arr[i+1,j] = ' ') and (Arr[i+2,j] = ' ')) or ((Arr[i-1,j] = ' ') and (Arr[i-2,j] = ' ')) or ((Arr[i,j-1] = ' ') and (Arr[i,j-2] = ' '))
+        then else kek:=false;
+
+
+
       if kek = false then goto GotoLabel;
       end;
 
@@ -70,5 +154,9 @@ if kek=false then
   end;
 doItFilledOkay:=kek;
 end;
+
+
+
+
 
 end.
