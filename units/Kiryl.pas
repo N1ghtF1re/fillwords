@@ -5,6 +5,7 @@ uses
     typesandconst,SysUtils;
 procedure  fillArray(var dictionary:TDictionary);
 function doItFilledOkay(var Arr:TPlayingField; fieldsize,x,y:integer):boolean;
+function checkExisting(var WordsList:TWordsList; StrA:string; sizeA:integer):boolean;
 implementation
 procedure fillArray(var dictionary:TDictionary);
 Const link = ('includes/library.txt');
@@ -155,7 +156,15 @@ if kek=false then
 doItFilledOkay:=kek;
 end;
 
-
+function checkExisting(var WordsList:TWordsList; StrA:string; sizeA:integer):boolean;
+var i:Integer;
+    boolk:Boolean;
+begin
+boolk:=False;
+for i:=1 to SizeA do
+  if WordsList[1,i]=StrA then boolk:=True;
+checkExisting:=boolk;
+end;
 
 
 
