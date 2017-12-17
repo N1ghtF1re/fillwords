@@ -14,11 +14,8 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
   repeat
     ib:=Random(n)+1;
     jb:=Random(n)+1;
-<<<<<<< HEAD
   until  ((playingField[ib,jb])=' ') and (ib<=(n-2)) and (jb<=(n-2));
-=======
-  until  (playingField[ib,jb])=' ';
->>>>>>> parent of 092f615... KEK
+
   repeat
     direction:=random(1)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of

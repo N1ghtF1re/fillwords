@@ -11,12 +11,13 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
  Randomize;
  exiter:=False;
   n:=fieldsize;
-  repeat
-    ib:=Random(n)+1;
-    jb:=Random(n)+1;
-  until  ((playingField[ib,jb])=' ') and (ib<=(n-2)) and (jb<=(n-2));
+
 
   repeat
+     repeat
+    ib:=Random(n)+1;
+    jb:=Random(n)+1;
+    until  ((playingField[ib,jb])=' ') and (ib<=(n-2)) or (jb<=(n-2));
     direction:=random(1)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
     1:
