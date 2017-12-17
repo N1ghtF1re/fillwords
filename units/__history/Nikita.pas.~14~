@@ -8,7 +8,7 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
  var exiter:Boolean;
  var cells,direction,n,i:Integer;
  begin
-
+ readln;
  Randomize;
  exiter:=False;
   n:=fieldsize;
