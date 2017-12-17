@@ -252,6 +252,8 @@ begin
       inc(WordsListSize);
     end;
   until(cellsnum <= 0);
+
+
   gameEnterWords(field, fieldsize, WordsListSize);
   writeln('Game over');
 end;
