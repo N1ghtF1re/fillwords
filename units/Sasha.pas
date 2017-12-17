@@ -247,7 +247,6 @@ begin
       dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
       Writeln('Enter to continue ', Cellsnum);
-      readln;
       WordsList[1,WordsListsize+1]:=Str;
       WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
       inc(WordsListSize);

@@ -14,11 +14,11 @@ var name:string;
     Words:TDictionary;
     PlayingField: TPlayingField;
 
+
 begin
   getConfig(name,level);
   Writeln('Welcome, ', name);
   fillArray(Words);
   readln;
   game(level,Words, PlayingField);
-  Readln;
 end.
