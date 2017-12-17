@@ -13,7 +13,6 @@ var name:string;
     level:integer;
     Words:TDictionary;
     PlayingField: TPlayingField;
-
 begin
   getConfig(name,level);
   Writeln('Welcome, ', name);
