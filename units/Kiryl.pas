@@ -27,6 +27,7 @@ begin
     dictionary[N,lenghtStr]:=inpStr;
     dictionary[1,lenghtStr]:=IntToStr(N-1);
   end;
+  close(f);
 end;
 
 function doItFilledOkay(var Arr:TPlayingField; fieldsize,x,y:integer):boolean;
