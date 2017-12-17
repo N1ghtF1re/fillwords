@@ -11,6 +11,7 @@ var
    isVseNorm: Boolean;
 const link = 'includes\config.txt';
 const letters = ['A'..'Z', 'a'..'z'];
+procedure fieldStatusQuo(var field:TPlayingField; fieldsize:Integer);
 procedure getConfig(var name:string;var level:integer);
 procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
 procedure writeMatrix(var Field:TPlayingField; size:integer);
@@ -152,6 +153,18 @@ begin
   until cellnum <= 0;
 end;
 
+procedure fieldStatusQuo(var field:TPlayingField; fieldsize:Integer);
+var i,j:integer;
+begin
+  for i:=1 to fieldsize do
+  begin
+    for j:=1 to fieldsize do
+    begin
+      field[i,j]:=' ';
+    end;
+  end;
+end;
+
 procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
 var fieldsize,cellsnum:integer;
 var ib,jb,ie,je, badi, badj, currlength, numofwords, i,j, min,max: integer;
@@ -166,13 +179,7 @@ begin
   wordslistsize:=0;
   fieldsize:= 5+lvl div 5;
   writeln(fieldsize);
-  for i:=1 to fieldsize do
-  begin
-    for j:=1 to fieldsize do
-    begin
-      field[i,j]:=' ';
-    end;
-  end;
+  fieldStatusQuo(field, fieldsize);
   cellsnum:=fieldsize*fieldsize;
   counter:=0;
   repeat
@@ -180,17 +187,24 @@ begin
     if ( not isVseNorm ) then
     begin
       field:=backup;
-      cellsnum:=backnumber;
+      inc(cellsnum,length(WordsList[1,wordslistSize]));
       WordsList[1,wordslistSize]:='';
       WordsList[2,wordslistSize]:='';
       dec(wordslistSize);
+      Inc(counter);
+      writeln(counter);
+      if(counter > 20) then
+      begin
+        fieldStatusQuo(field, fieldsize);
+        cellsnum:=fieldsize*fieldsize;
+      end;
     end;
+
     PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
 
     if ( isVseNorm ) then
     begin
       backup:=field;
-      backnumber:=cellsnum;
       if(ib <> ie) then
         currlength:= abs(ie-ib)+1
       else
@@ -248,8 +262,6 @@ begin
       end;
       dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
-      inc(counter);
-      writeln(counter);
       Writeln('Enter to continue ', Cellsnum);
       WordsList[1,WordsListsize+1]:=Str;
       WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
