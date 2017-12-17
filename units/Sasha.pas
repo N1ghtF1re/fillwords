@@ -192,7 +192,7 @@ begin
       WordsList[2,wordslistSize]:='';
       dec(wordslistSize);
       Inc(counter);
-      writeln(counter);
+      //writeln(counter);
       if(counter > 20) then
       begin
         fieldStatusQuo(field, fieldsize);
@@ -263,7 +263,7 @@ begin
       end;
       dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
-      Writeln('Enter to continue ', Cellsnum);
+      //Writeln('Enter to continue ', Cellsnum);
       WordsList[1,WordsListsize+1]:=Str;
       WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
       inc(WordsListSize);
