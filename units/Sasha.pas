@@ -169,6 +169,7 @@ end;
           del:=True;
           clrscr;
           writeMatrix(Gamefield, fieldsize);
+          field[1,i]:='';
         end;
         Inc(i);
       end;
