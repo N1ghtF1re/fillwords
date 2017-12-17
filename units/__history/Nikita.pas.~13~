@@ -8,7 +8,6 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
  var exiter:Boolean;
  var cells,direction,n,i:Integer;
  begin
- readln;
  Randomize;
  exiter:=False;
   n:=fieldsize;
@@ -17,8 +16,8 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
     ib:=Random(n)+1;
     jb:=Random(n)+1;
   until  ((playingField[ib,jb])=' ') and ((ib<=(n-2)) or (jb<=(n-2))) and
-   (((playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ')) or
-       ((playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' ')));
+   ((playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ')) or
+       ((playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' '));
   repeat
     direction:=random(2)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
