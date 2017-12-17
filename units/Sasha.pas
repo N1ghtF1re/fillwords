@@ -15,7 +15,7 @@ procedure fieldStatusQuo(var field:TPlayingField; fieldsize:Integer);
 procedure getConfig(var name:string;var level:integer);
 procedure game(const lvl:integer; Words:TDictionary;var field: TPlayingField);
 procedure writeMatrix(var Field:TPlayingField; size:integer);
-procedure gameEnterWords(var field:TPLayingField; fieldsize:integer; var size: integer);
+procedure gameEnterWords(var field:TWordsList; var Gamefield:TPLayingField; fieldsize:integer; var size: integer);
 procedure deleteWord(var field:TPlayingField;const ib,ie,jb,je:integer; var cellnum: integer);
 implementation
 procedure getConfig(var name:string;var level:integer);
@@ -116,7 +116,7 @@ begin
   Dec(cellnum,currlength);
 end;
 
-procedure gameEnterWords(var field:TPLayingField; fieldsize:integer; var size: integer);
+procedure gameEnterWords(var field:TWordsList; var Gamefield:TPLayingField; fieldsize:integer; var size: integer);
 var
   word:string;
   i:integer;
@@ -131,7 +131,9 @@ begin
     writeln(#10#13,'Write word:',#10#13);
     readln(word);
     del:=false;
-    for i:=1 to size do
+    //for i:=1 to size do
+    i:=1;
+    while((i<=size) and (not del)) do
     begin
       if ( AnsiLowerCase(field[1,i]) = AnsiLowerCase(word) ) then
       begin
@@ -143,10 +145,11 @@ begin
         jb:=StrToInt(Copy(CoordString,1,Pos(':',CoordString)-1));
         Delete(CoordString,1,Pos(':',CoordString));
         je:=StrToInt(CoordString);
-        deleteWord(field,ib,ie,jb,je, cellnum);
+        deleteWord(Gamefield,ib,ie,jb,je, cellnum);
         del:=True;
-        Break;
+        writeMatrix(Gamefield, fieldsize);
       end;
+      Inc(i);
     end;
     if (not del) then
       Writeln('Word not found :c');
@@ -192,7 +195,7 @@ begin
       WordsList[2,wordslistSize]:='';
       dec(wordslistSize);
       Inc(counter);
-      writeln(counter);
+     // writeln(counter);
       if(counter > 20) then
       begin
         fieldStatusQuo(field, fieldsize);
@@ -263,7 +266,7 @@ begin
       end;
       dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
-      Writeln('Enter to continue ', Cellsnum);
+     // Writeln('Enter to continue ', Cellsnum);
       WordsList[1,WordsListsize+1]:=Str;
       WordsList[2,WordsListSize+1]:=IntToStr(ib)+':'+IntToStr(ie)+':'+IntToStr(jb)+':'+IntToStr(je);
       inc(WordsListSize);
@@ -272,7 +275,7 @@ begin
 
 
 
-  gameEnterWords(field, fieldsize, WordsListSize);
+  gameEnterWords(WordsList,field,fieldsize, WordsListSize);
   writeln('Game over');
 end;
 
