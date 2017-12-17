@@ -73,7 +73,7 @@ begin
       field[i,j]:=' ';
     end;
   end;
-  cellsnum:=fieldsize;
+  cellsnum:=fieldsize*fieldsize;
 
   repeat
     backup:=field;
@@ -86,9 +86,9 @@ begin
     else
     begin
       if(ib <> ie) then
-        currlength:= abs(ie-ib)
+        currlength:= abs(ie-ib)+1
       else
-        currlength:= abs(je-jb);
+        currlength:= abs(je-jb)+1;
       numofwords:= StrToInt(Words[1,currlength]);
       str:=words[Random(Numofwords-2)+3,currlength];
 
@@ -131,7 +131,10 @@ begin
           Inc(Petya);
         end;
       end;
+      dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
+      Writeln('Enter to continue ', Cellsnum);
+      readln;
     end;
 
 
