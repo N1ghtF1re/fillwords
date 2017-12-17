@@ -100,17 +100,15 @@ big
 bin
 bis
 bit
-Bly
+bly
 boa
-Bob
 bod
-Boe
+boe
 bog
 boi
 boo
 bot
 bow
-Bow
 box
 boy
 bra
@@ -123,7 +121,6 @@ bus
 but
 buy
 bye
-Bye
 cab
 cal
 cam
