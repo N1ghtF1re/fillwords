@@ -62,6 +62,8 @@ var fieldsize,cellsnum:integer;
 i,j:byte;
 var ib,jb,ie,je, badi, badj, currlength, numofwords, Vasya,Petya, min,max: integer;
 backup: TPlayingField;
+rand:byte;
+backnumber:integer;
 str:string;
 begin
   fieldsize:= 5+lvl div 5;
@@ -73,24 +75,28 @@ begin
       field[i,j]:=' ';
     end;
   end;
-  cellsnum:=fieldsize;
+  cellsnum:=fieldsize*fieldsize;
 
   repeat
-    backup:=field;
-    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
     isVseNorm:= doItFilledOkay(field, fieldsize, badi, badj);
     if ( not isVseNorm ) then
     begin
       field:=backup;
-    end
-    else
+      cellsnum:=backnumber;
+    end;
+    PullCoordinates(FieldSize, Words,field, ib,jb,ie,je);
+
+    if ( isVseNorm ) then
     begin
+      backup:=field;
+      backnumber:=cellsnum;
       if(ib <> ie) then
-        currlength:= abs(ie-ib)
+        currlength:= abs(ie-ib)+1
       else
-        currlength:= abs(je-jb);
+        currlength:= abs(je-jb)+1;
       numofwords:= StrToInt(Words[1,currlength]);
-      str:=words[Random(Numofwords-2)+3,currlength];
+      rand:=Random(Numofwords-1)+2;
+      str:=words[rand,currlength];
 
       if(ib <> ie) then
       begin
@@ -105,10 +111,13 @@ begin
           max:=ie;
         end;
         Petya:=1;
-        for Vasya:=min to max do
+        vasya:=min;
+        //for Vasya:=min to max do
+        while (vasya <= max) do
         begin
           field[Vasya, jb]:=str[Petya];
           Inc(Petya);
+          inc(Vasya);
         end;
 
       end
@@ -125,13 +134,19 @@ begin
           max:=je;
         end;
         Petya:=1;
-        for Vasya:=min to max do
+        vasya:=min;
+        //for Vasya:=min to max do
+        while (vasya <= max) do
         begin
           field[ib, Vasya]:=str[Petya];
           Inc(Petya);
+          inc(Vasya);
         end;
       end;
+      dec(cellsnum, currlength);
       writeMatrix(field, fieldsize);
+      Writeln('Enter to continue ', Cellsnum);
+      readln;
     end;
 
 

@@ -17,6 +17,9 @@ begin
   getConfig(name,level);
   Writeln('Welcome, ', name);
   fillArray(Words);
+  for level:=1 to 10 do
+    writeln(Words[level,3]);
+  readln;
   game(level,Words, PlayingField);
   Readln;
 end.
