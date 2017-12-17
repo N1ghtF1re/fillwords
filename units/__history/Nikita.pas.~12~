@@ -11,21 +11,20 @@ procedure PullCoordinates(const Fieldsize:integer; dictionary:TDictionary; var P
  Randomize;
  exiter:=False;
   n:=fieldsize;
-  exiter:=false;
+
+
   repeat
+    repeat
     ib:=Random(n)+1;
     jb:=Random(n)+1;
-  until  ((playingField[ib,jb])=' ') and ((ib<=(n-2)) or (jb<=(n-2))) and
-   ((playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ')) or
-       ((playingField[ib+1,jb]=' ') and (playingField[ib+2,jb]=' '));
-  repeat
+  until  ((playingField[ib,jb])=' ') and (ib<=(n-2)) or (jb<=(n-2));
     direction:=random(2)+1;             //1-Right 2-Bottom 3-Left 4-up
     case direction of
     1:
     if (n-jb>=2) and (playingField[ib,jb+1]=' ') and (playingField[ib,jb+2]=' ')and (playingField[ib,jb]=' ') then
       begin
      cells:=0;
-      for I:=jb to n do
+      for I:=ib to n do
          begin
          if playingField[ib,i]=' ' then
          inc(cells)
